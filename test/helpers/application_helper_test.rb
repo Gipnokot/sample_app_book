@@ -1,5 +1,5 @@
 # test/helpers/application_helper_test.rb
-require 'test_helper'
+require "test_helper"
 
 class ApplicationHelperTest < ActionView::TestCase
   test "full title helper" do

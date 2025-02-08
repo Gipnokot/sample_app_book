@@ -5,9 +5,8 @@ gem "sassc-rails"
 gem "bcrypt"
 gem "sprockets-rails"
 gem "sqlite3", ">= 1.4"
-gem "puma", ">= 5.0"
 gem "importmap-rails"
-gem 'bootstrap-sass', '3.4.1'
+gem "bootstrap-sass", "3.4.1"
 
 gem "turbo-rails"
 gem "stimulus-rails"
@@ -39,4 +38,5 @@ end
 
 group :production do
   gem "pg", "1.3.5"
+  gem "puma", ">= 5.0"
 end

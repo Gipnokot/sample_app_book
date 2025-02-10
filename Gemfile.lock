@@ -402,7 +402,6 @@ DEPENDENCIES
   rubocop-rails-omakase
   sassc-rails
   selenium-webdriver (= 4.2.0)
-  sprockets-rails
   sqlite3 (>= 1.4)
   stimulus-rails
   turbo-rails

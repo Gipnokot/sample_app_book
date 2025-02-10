@@ -1,3 +1,8 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-import "@hotwired/turbo-rails"
+// app/javascript/application.js
+import "@hotwired/turbo-rails" // Turbo должен остаться
 import "controllers"
+import "jquery"
+import "bootstrap"
+
+// Сделаем jQuery доступным глобально (если нужно)
+window.$ = window.jQuery = require('jquery');

@@ -1,8 +1,7 @@
-// app/javascript/application.js
-import "@hotwired/turbo-rails" // Turbo должен остаться
-import "controllers"
-import "jquery"
-import "bootstrap"
+import "@hotwired/turbo-rails"; // Turbo должен остаться
+import "controllers";
+import jquery from "jquery";
+import "bootstrap";
 
 // Сделаем jQuery доступным глобально (если нужно)
-window.$ = window.jQuery = require('jquery');
+window.$ = window.jQuery = jquery;

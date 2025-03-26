@@ -194,3 +194,34 @@ input, textarea, select, .uneditable-input {
   width: auto;
   margin-left: 0;
 }
+
+/* Список пользователей */
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
+  }
+}
+
+.pagination {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.pagination li {
+  display: inline;
+  margin-right: 5px;
+}
+
+.pagination li a {
+  padding: 5px 10px;
+  text-decoration: none;
+  color: #007bff;
+}
+
+.pagination li a:hover {
+  background-color: #f1f1f1;
+}

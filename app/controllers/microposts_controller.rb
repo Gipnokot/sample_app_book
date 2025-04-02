@@ -22,7 +22,7 @@ class MicropostsController < ApplicationController
   private
 
   def micropost_params
-    params.require(:micropost).permit(:content, :picture)
+    params.require(:micropost).permit(:content, :picture)  # picture заменяет поле :image для Active Storage
   end
 
   def correct_user

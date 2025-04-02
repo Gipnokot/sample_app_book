@@ -1,7 +1,8 @@
+# test/fixtures/users.yml
 michael:
   name: Michael Example
   email: michael@example.com
-  password_digest: <%= User.digest('password') %>
+  password_digest: $2a$12$6ZyT0z8GMiGe3BxU3Xn.xOjLzLtI4sZhXiwHo0tWaU.j9REa0RjG2
   admin: true
   activated: true
   activated_at: <%= Time.zone.now %>

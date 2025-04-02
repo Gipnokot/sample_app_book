@@ -5,11 +5,13 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy
 
   def index
-    @users = User.paginate(page: params[:page], per_page: 5)
+      @users = User.paginate(page: params[:page], per_page: 30)
   end
 
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page], per_page: 10)
+    redirect_to root_url unless @user.activated?
   end
 
   def new
@@ -28,16 +30,19 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    if logged_in?
+      @user = User.find(params[:id])
+    else
+      store_location
+      redirect_to login_url
+    end
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:success] = "Profile updated"
-      redirect_to @user
+      redirect_back_or @user
     else
-      render "edit", status: :unprocessable_entity
+      render "edit"
     end
   end
 
@@ -51,14 +56,6 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
-    end
-
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
     end
 
     def correct_user
@@ -77,5 +74,12 @@ class UsersController < ApplicationController
 
     def admin_user
       redirect_to(root_url) unless current_user.admin?
+    end
+
+    def friendly_forwarding
+      if session[:forwarding_url]
+        redirect_to session[:forwarding_url]
+        session.delete(:forwarding_url)
+      end
     end
 end

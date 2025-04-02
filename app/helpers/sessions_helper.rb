@@ -38,6 +38,7 @@ module SessionsHelper
   def log_out
     forget(current_user)
     session.delete(:user_id)
+    puts "Session: #{session[:user_id]}, Cookies: #{cookies[:user_id]}"
     @current_user = nil
   end
 

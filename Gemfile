@@ -9,6 +9,8 @@ gem "bootstrap-sass", "3.4.1"
 gem "faker"
 gem "will_paginate", "~> 3.3"
 gem "turbo-rails"
+gem "carrierwave"
+gem "mini_magick"
 gem "stimulus-rails"
 gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ windows jruby ]

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :users
   resources :account_activations,   only: [ :edit ]
   resources :password_resets,       only: [ :new, :create, :edit, :update ]
+  resources :microposts,            only: [ :create, :destroy ]
 
   get "up" => "rails/health#show",                    as: :rails_health_check
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker

@@ -13,6 +13,6 @@ class Micropost < ApplicationRecord
   def picture_size
     return unless picture.attached? && picture.byte_size > 5.megabytes
 
-    errors.add(:picture, 'should be less than 5MB')
+    errors.add(:picture, "should be less than 5MB")
   end
 end

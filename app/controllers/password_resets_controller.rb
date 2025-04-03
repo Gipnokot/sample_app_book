@@ -1,3 +1,4 @@
+# КОнтроллер для сброса пароля пользователя
 class PasswordResetsController < ApplicationController
   before_action :get_user,         only: %i[edit update]
   before_action :valid_user,       only: %i[edit update]
@@ -13,11 +14,11 @@ class PasswordResetsController < ApplicationController
     if @user
       @user.create_reset_digest
       @user.send_password_reset_email
-      flash[:info] = 'Email sent with password reset instructions'
+      flash[:info] = "Email sent with password reset instructions"
       redirect_to root_url
     else
-      flash.now[:danger] = 'Email address not found'
-      render 'new'
+      flash.now[:danger] = "Email address not found"
+      render "new"
     end
   end
 
@@ -27,14 +28,14 @@ class PasswordResetsController < ApplicationController
     # Проверка, что пароль не пустой
     if password_blank?
       flash.now[:danger] = "Password can't be blank"
-      render 'edit'
+      render "edit"
     # Если пароль не пустой, обновляем пользователя и логиним его
     elsif @user.update(user_params)
       log_in @user
-      flash[:success] = 'Password has been reset.'
+      flash[:success] = "Password has been reset."
       redirect_to @user
     else
-      render 'edit'
+      render "edit"
     end
   end
 
@@ -66,7 +67,7 @@ class PasswordResetsController < ApplicationController
   def check_expiration
     return unless @user.password_reset_expired?
 
-    flash[:danger] = 'Password reset has expired.'
+    flash[:danger] = "Password reset has expired."
     redirect_to new_password_reset_url
   end
 end

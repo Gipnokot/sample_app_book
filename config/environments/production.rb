@@ -83,6 +83,9 @@ Rails.application.configure do
 
   config.active_storage.service = :local
 
+  config.serve_static_files = true
+  config.public_file_server.enabled = true
+
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 

@@ -1,0 +1,6 @@
+<%= form_for(current_user.active_relationships.find_by(followed_id: @user.id),
+             html: { method: :delete },
+             data: { turbo: false }) do |f| %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= f.submit "Unfollow", class: "btn" %>
+<% end %>

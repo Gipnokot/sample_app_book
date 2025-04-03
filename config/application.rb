@@ -1,6 +1,6 @@
-require_relative "boot"
+require_relative 'boot'
 
-require "rails/all"
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -15,6 +15,11 @@ module SampleAppBook
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
+
+    config.action_controller.default_protect_from_forgery = false
+
+    # Включать токен аутентификации в удаленные формы.
+    config.action_view.embed_authenticity_token_in_remote_forms = true
 
     # Configuration for the application, engines, and railties goes here.
     #

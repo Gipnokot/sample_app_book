@@ -1,18 +1,13 @@
-@import "bootstrap-sprockets";
 @import "bootstrap";
 
-/* Variables */
+/* Переменные */
 $light-gray: #777;
 $gray-medium-light: #eaeaea;
 $gray-darker: #555;
 $gray-light: #999;
+$gray-lighter: #f5f5f5; // Добавлена недостающая переменная
 
-/* Mixins */
-@mixin box_sizing {
-  box-sizing: border-box;
-}
-
-/* Universal */
+/* Универсальные стили */
 body {
   padding-top: 60px;
 }
@@ -27,12 +22,20 @@ textarea {
 
 .center {
   text-align: center;
+  
   h1 {
     margin-bottom: 10px;
   }
 }
 
-/* Typography */
+.jumbotron {
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+  background-color: #e9ecef;
+  border-radius: .3rem;
+}
+
+/* Типографика */
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
@@ -68,6 +71,7 @@ p {
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
+  
   &:hover {
     color: white;
     text-decoration: none;
@@ -80,24 +84,30 @@ footer {
   padding-top: 5px;
   border-top: 1px solid $gray-medium-light;
   color: $gray-light;
+
   a {
     color: $gray-light;
+
     &:hover {
       color: $gray-darker;
     }
   }
+
   small {
     float: left;
   }
+
   ul {
     float: right;
     list-style: none;
+
     li {
       float: left;
       margin-left: 15px;
     }
   }
 }
+
 @media (max-width: 800px) {
   footer {
     small {
@@ -105,9 +115,11 @@ footer {
       float: none;
       margin-bottom: 1em;
     }
+
     ul {
       float: none;
       padding: 0;
+
       li {
         float: none;
         margin-left: 0;
@@ -116,13 +128,13 @@ footer {
   }
 }
 
-/* Miscellaneous */
+/* Отладочный вывод */
 .debug_dump {
   clear: both;
   float: left;
   width: 100%;
   margin-top: 45px;
-  @include box_sizing;
+  box-sizing: border-box;
 }
 
 /* Sidebar */
@@ -130,15 +142,18 @@ aside {
   section {
     margin-top: 20px;
     padding: 10px 0;
+
     &:first-child {
       border: 0;
       padding-top: 0;
     }
+
     span {
       display: block;
       margin-bottom: 3px;
       line-height: 1;
     }
+
     h1 {
       font-size: 1.4em;
       text-align: left;
@@ -147,49 +162,55 @@ aside {
       margin-top: 0;
     }
   }
+
   .gravatar {
     float: left;
     margin-right: 10px;
   }
+
   .gravatar_edit {
     margin-top: 15px;
   }
 }
 
-/* forms */
+/* Формы */
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
-  @include box_sizing;
+  box-sizing: border-box;
 }
-  input {
-  height: auto !important;
+
+input {
+  height: auto;
 }
-  
+
 #error_explanation {
   color: red;
+
   ul {
-  color: red;
-  margin: 0 0 30px 0;
-  }
-}
-.field_with_errors {
-  @extend .has-error;
-  .form-control {
-  color: $state-danger-text;
+    color: red;
+    margin: 0 0 30px 0;
   }
 }
 
-/* forms */
+.field_with_errors {
+  .form-control {
+    color: red; // Ранее использовалась неизвестная переменная `$state-danger-text`
+  }
+}
+
+/* Чекбоксы */
 .checkbox {
   margin-top: -10px;
   margin-bottom: 10px;
+
   span {
     margin-left: 20px;
     font-weight: normal;
   }
 }
+
 #session_remember_me {
   width: auto;
   margin-left: 0;
@@ -199,6 +220,7 @@ input, textarea, select, .uneditable-input {
 .users {
   list-style: none;
   margin: 0;
+
   li {
     overflow: auto;
     padding: 10px 0;
@@ -206,66 +228,131 @@ input, textarea, select, .uneditable-input {
   }
 }
 
+/* Пагинация */
 .pagination {
   display: inline-block;
   margin-top: 20px;
+
+  li {
+    display: inline;
+    margin-right: 5px;
+
+    a {
+      padding: 5px 10px;
+      text-decoration: none;
+      color: #007bff;
+
+      &:hover {
+        background-color: #f1f1f1;
+      }
+    }
+  }
 }
 
-.pagination li {
-  display: inline;
-  margin-right: 5px;
-}
-
-.pagination li a {
-  padding: 5px 10px;
-  text-decoration: none;
-  color: #007bff;
-}
-
-.pagination li a:hover {
-  background-color: #f1f1f1;
-}
-
-/* микросообщения */
+/* Микросообщения */
 .microposts {
   list-style: none;
   padding: 0;
+
   li {
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;
   }
+
   .user {
     margin-top: 5em;
     padding-top: 0;
   }
+
   .content {
     display: block;
     margin-left: 60px;
+
     img {
       display: block;
       padding: 5px 0;
     }
   }
+
   .timestamp {
     color: $gray-light;
     display: block;
     margin-left: 60px;
   }
+
   .gravatar {
     float: left;
     margin-right: 10px;
     margin-top: 5px;
   }
 }
+
 aside {
   textarea {
     height: 100px;
     margin-bottom: 5px;
   }
 }
+
 span.picture {
   margin-top: 10px;
+
   input {
     border: 0;
   }
+}
+
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+
+.gravatar_edit {
+  margin-top: 15px;
+}
+
+/* Статистика */
+.stats {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+
+  a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid $gray-lighter;
+    color: gray;
+
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+
+    &:hover {
+      text-decoration: none;
+      color: blue;
+    }
+  }
+
+  strong {
+    display: block;
+  }
+}
+
+/* Аватары пользователей */
+.user_avatars {
+  overflow: auto;
+  margin-top: 10px;
+
+  .gravatar {
+    margin: 1px 1px;
+  }
+
+  a {
+    padding: 0;
+  }
+}
+
+.users.follow {
+  padding: 0;
 }

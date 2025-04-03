@@ -2,10 +2,20 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
+      <%= gravatar_for @user %>
+      <h1><%= @user.name %></h1>
+      <%= render 'follow_form' if logged_in? %>
+      <span><b>Microposts:</b> <%= @user.microposts.count %></span>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+      <% if @user.followers.any? %>
+        <div class="user_avatars">
+          <% @user.followers.limit(6).each do |user| %>
+            <%= link_to gravatar_for(user, size: 30), user %>
+          <% end %>
+        </div>
+      <% end %>
     </section>
   </aside>
   <div class="col-md-8">
@@ -15,8 +25,6 @@
         <%= render @microposts %>
       </ol>
       <%= will_paginate @microposts %>
-    <% else %>
-      <p>This user has not posted any microposts yet.</p>
     <% end %>
   </div>
 </div>
